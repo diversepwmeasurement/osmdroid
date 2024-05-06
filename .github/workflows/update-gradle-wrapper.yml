@@ -1,14 +1,14 @@
-name: Update Gradle Wrapper
-
-on:
-  workflow_dispatch:
-
 jobs:
   update-gradle-wrapper:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@v4
-
-      - name: Update Gradle Wrapper
-        uses: gradle-update/update-gradle-wrapper-action@main
+    - continue-on-error: true
+      name: Checkout the code
+      uses: actions/checkout@v4
+    - continue-on-error: true
+      name: Update Gradle Wrapper
+      uses: gradle-update/update-gradle-wrapper-action@main
+name: Update Gradle Wrapper
+on:
+  repository_dispatch:
+    types: trigger-ga___update-gradle-wrapper.yml
